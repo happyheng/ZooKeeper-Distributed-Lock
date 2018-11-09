@@ -19,10 +19,7 @@ import static org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE;
  * Created by happyheng on 2018/11/6.
  */
 @Service
-public class LockBaseTest {
-
-
-
+public class LockMaster {
 
     @Autowired
     private ZooKeeper zooKeeper;
