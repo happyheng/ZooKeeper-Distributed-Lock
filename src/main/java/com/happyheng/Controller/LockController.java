@@ -31,7 +31,15 @@ public class LockController {
 
         logger.info(" randomNum " + randomNum + " 开启 ");
         lockService.lock(LockConsts.LOCK_MASTER_PATH, ()->{
-            logger.info(" randomNum " + randomNum + " 执行中 ");
+            logger.info(" randomNum " + randomNum + " begin ");
+
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            logger.info(" randomNum " + randomNum + " end ");
         });
         return "";
     }

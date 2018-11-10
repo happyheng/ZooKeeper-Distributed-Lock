@@ -37,7 +37,7 @@ public class MasterNode extends Node{
                 List<String> childNodeList = zooKeeper.getChildren(LockConsts.LOCK_MASTER_PATH, false);
 
                 if (CollectionUtils.isEmpty(childNodeList)) {
-                    logger.info("未发现子节点");
+                    // logger.info("未发现子节点");
                     continue;
                 }
 
@@ -49,10 +49,10 @@ public class MasterNode extends Node{
                  * 如果ctime比现在的时间大10秒，那么删除此节点
                  */
                 if (System.currentTimeMillis() - stat.getCtime() > 10 * 1000) {
-                    logger.info("大于10秒，删除此节点，节点路径为" + firstNodeCurrentPath);
-                    zooKeeper.delete(firstNodeCurrentPath, -1);
+                   // logger.info("大于10秒，删除此节点，节点路径为" + firstNodeCurrentPath);
+                   // zooKeeper.delete(firstNodeCurrentPath, -1);
                 } else {
-                    logger.info("未大于10秒，节点路径为" + firstNodeCurrentPath);
+                   // logger.info("未大于10秒，节点路径为" + firstNodeCurrentPath);
                 }
 
             } catch (KeeperException e) {
