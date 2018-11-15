@@ -31,6 +31,16 @@ public class LockService {
 
     public void lock(String lockBasePath,final Runnable runnable) {
 
+        // 先创建lock节点
+        try {
+            zooKeeper.create(lockBasePath, "".getBytes(), OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        } catch (KeeperException.NodeExistsException e) {
+
+        }  catch (KeeperException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         /**
          * 可以使用 CountDownLatch 来实现同步，每次调用 lock（） 方法的时候生成一下，传入到 doLock（） 中
